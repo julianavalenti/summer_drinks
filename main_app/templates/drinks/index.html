@@ -5,11 +5,15 @@
 
 {% for drink in drinks %}
 <div class="card">
-  <div class="card-content">
-    <span class="card-title">{{ drink.name }}</span>
-    <p>Base: {{ drink.base }}</p>
-    <p>Ingredients: {{ drink.ingredients }}</p>
-    
-  </div>
+  <!-- add this single line below -->
+  <a href="{% url 'detail' drink.id %}"> </a>
+    <div class="card-content">
+      <span class="card-title">{{ drink.name }}</span>
+      <p>Base: {{ drink.breed }}</p>
+      <p>Ingredients: {{ drink.ingredients }}</p>
+     
+    </div>
+    <!-- and this following one as well -->
+  </a>
 </div>
 {% endfor %} {% endblock %}

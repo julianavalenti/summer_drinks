@@ -3,6 +3,7 @@ from django.shortcuts import render
 
 # Add the following import
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 from .models import Drink
 
 
@@ -31,3 +32,12 @@ def about(request):
 def drinks_index(request):
     drinks = Drink.objects.all()
     return render(request, 'drinks/index.html', { 'drinks': drinks })
+
+def drinks_detail(request, drink_id):
+    drink = Drink.objects.get(id=drink_id)
+    return render(request, 'drinks/detail.html', { 'drink': drink })
+
+class DrinkCreate(CreateView):
+    model = Drink
+    fields = ['name', 'base', 'ingredients']
+#   success_url = '/drinks/'
