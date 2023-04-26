@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 # Add the following import
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Drink
 
 
@@ -41,3 +41,11 @@ class DrinkCreate(CreateView):
     model = Drink
     fields = ['name', 'base', 'ingredients']
 #   success_url = '/drinks/'
+
+class DrinkUpdate(UpdateView):
+    model = Drink
+    fields = ['base', 'ingredients']
+
+class DrinkDelete(DeleteView):
+    model = Drink
+    success_url = '/drinks/'
